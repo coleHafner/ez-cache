@@ -1,0 +1,22 @@
+{
+  "name": "ez-cache",
+  "version": "1.0.1",
+  "description": "Easy cache for caching api requests, or pretty much anything you want to cache.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coleHafner/ez-cache.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cache",
+    "easy",
+    "cache",
+    "ez",
+    "cache"
+  ],
+  "author": "Cole Hafner <colehafner@gmail.com> (http://colehafner.com)",
+  "license": "ISC"
+}
