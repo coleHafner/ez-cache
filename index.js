@@ -4,7 +4,7 @@ const fs = require('fs');
 module.exports = function(path, lifetime, encoding) {
 	lifetime = lifetime || 3600; // 1 hour
 	encoding = encoding || 'utf8';
-	path = path || './cache';
+	path = path || './.ez-cache';
 
 	const createCacheDir = () => {
 		if (fs.existsSync(path)) {
