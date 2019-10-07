@@ -1,6 +1,6 @@
 {
   "name": "ez-cache",
-  "version": "1.0.1",
+  "version": "1.1.0-beta.0",
   "description": "Easy cache for caching api requests, or pretty much anything you want to cache.",
   "main": "index.js",
   "repository": {
