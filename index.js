@@ -6,8 +6,23 @@ module.exports = function(path, lifetime, encoding) {
 	encoding = encoding || 'utf8';
 	path = path || './cache';
 
+	const createCacheDir = () => {
+		if (fs.existsSync(path)) {
+			return;
+		}
+
+		try {
+			fs.mkdirSync(path);
+
+		} catch (err) {
+			throw new Error(`Could not create dir "${path}". Error says: "${err}"`);
+		}
+	}
+
 	return {
 		set: (cacheFile, data, infinite) => {
+			createCacheDir();
+
 			const created = Date.now();
 			const expires = infinite !== true
 				? created + (lifetime * 1000)
@@ -23,6 +38,8 @@ module.exports = function(path, lifetime, encoding) {
 			});
 		},
 		get: (cacheFile, returnAll) => {
+			createCacheDir();
+
 			return new Promise((resolve, reject) => {
 				fs.readFile(cacheFile, (err, entry) => {
 					if (err) reject(err);
@@ -32,6 +49,8 @@ module.exports = function(path, lifetime, encoding) {
 			});
 		},
 		exists: cacheFile => {
+			createCacheDir();
+
 			if (fs.existsSync(cacheFile)) {
 				try {
 					const entry = JSON.parse(fs.readFileSync(cacheFile));
@@ -48,6 +67,6 @@ module.exports = function(path, lifetime, encoding) {
 			const filename = `${crypto.createHash('md5').update(url).digest('hex')}.json`;
 			return `${path}/${filename}`;
 
-		}
+		},
 	};
 }
